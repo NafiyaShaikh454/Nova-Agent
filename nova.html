@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nova AI Agent</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e1b4b);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #a78bfa;
+        }
+
+        .status {
+            background: rgba(34,197,94,0.15);
+            color: #4ade80;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 50px;
+        }
+
+        .icon {
+            width: 85px;
+            height: 85px;
+            margin: auto;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 0 35px rgba(139,92,246,0.5);
+        }
+
+        h1 {
+            margin-top: 25px;
+            font-size: 48px;
+        }
+
+        .highlight {
+            color: #a78bfa;
+        }
+
+        .subtitle {
+            margin: 18px auto;
+            max-width: 600px;
+            color: #cbd5e1;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 28px;
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .card h3 {
+            margin: 15px 0 10px;
+            color: #ddd6fe;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .chat {
+            margin: 45px auto;
+            max-width: 700px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 25px;
+            border-radius: 20px;
+        }
+
+        .chat h2 {
+            margin-bottom: 20px;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            padding: 14px 22px;
+            border: none;
+            border-radius: 10px;
+            background: #8b5cf6;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #7c3aed;
+        }
+
+        #response {
+            margin-top: 18px;
+            color: #c4b5fd;
+            min-height: 25px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        @media(max-width: 700px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">✦ NOVA</div>
+        <div class="status">● AI Agent Online</div>
+    </nav>
+
+    <section class="hero">
+
+        <div class="icon">✦</div>
+
+        <h1>Meet <span class="highlight">Nova</span></h1>
+
+        <p class="subtitle">
+            A smart and simple AI-inspired web agent designed to
+            assist users, answer queries and provide useful information.
+        </p>
+
+    </section>
+
+    <div class="container">
+
+        <div class="cards">
+
+            <div class="card">
+                <div style="font-size:30px;">🤖</div>
+                <h3>Smart Assistant</h3>
+                <p>
+                    Nova provides quick and helpful responses
+                    to user questions.
+                </p>
+            </div>
+
+            <div class="card">
+                <div style="font-size:30px;">⚡</div>
+                <h3>Fast Response</h3>
+                <p>
+                    Designed with a clean interface for
+                    simple and fast interaction.
+                </p>
+            </div>
+
+            <div class="card">
+                <div style="font-size:30px;">☁️</div>
+                <h3>Cloud Ready</h3>
+                <p>
+                    This web application can be deployed
+                    and accessed through Google Cloud.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="chat">
+
+            <h2>Talk to Nova</h2>
+
+            <div class="input-area">
+                <input
+                    type="text"
+                    id="question"
+                    placeholder="Ask Nova something..."
+                >
+
+                <button onclick="askNova()">Ask</button>
+            </div>
+
+            <div id="response"></div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        Nova AI Agent • Cloud Computing Practical
+    </footer>
+
+
+    <script>
+
+        function askNova() {
+
+            let question =
+                document.getElementById("question").value;
+
+            let response =
+                document.getElementById("response");
+
+            if (question.trim() === "") {
+
+                response.innerHTML =
+                    "Please enter a question.";
+
+                return;
+            }
+
+            response.innerHTML =
+                "✦ Nova: Hello! I'm Nova, your cloud-based web assistant. Your question was received successfully 🚀";
+        }
+
+    </script>
+
+</body>
+</html>
